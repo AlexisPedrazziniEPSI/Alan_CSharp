@@ -48,7 +48,11 @@ namespace Geometrie.BLL
         public Polygone(Point a, Point b, Point c, params Point[]? autrePoints)
         {
             if (a == null || b == null || c == null)
-                throw new ArgumentNullException();
+                throw new ArgumentNullException("Il manque un des points");
+            if (autrePoints!=null && autrePoints.Any(p => p == null))
+                throw new ArgumentNullException("Un des autres points manque");
+
+            // lever une exception si au moins 2 points ont les mêmes coordonnées
 
             lesPoints = new ArrayList();
             lesPoints.Add(a);
@@ -56,6 +60,15 @@ namespace Geometrie.BLL
             lesPoints.Add(c);
             if (autrePoints != null)
                 lesPoints.AddRange(autrePoints);
+
+            for (int i = 0; i < Count - 1; i++)
+            { 
+                for (int j = i + 1;j < Count;j++)
+                {
+                    if (this[i] == this[j])
+                        throw new ArgumentException("2 Point son identique");
+                }
+            }
         }
 
         public IEnumerator<Point> GetEnumerator()

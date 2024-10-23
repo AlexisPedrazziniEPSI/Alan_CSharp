@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Rappel_cours;
+
 Console.WriteLine("Hello, World!");
 
 // // pour commentaire
@@ -53,3 +55,33 @@ List<int> liste = new List<int>();
 liste.Add(1);
 //Syntaxe rapide d'affectation
 List<int> liste2 = new List<int> { 1, 2, 3, 4, 5 };
+
+// Méthode d'extension
+// On ajoute une méthode d'extension sans la modifier
+var chaine = "Une chaine de caractère sans intérêt";
+Console.WriteLine(chaine.MajusculeAuDebutDesMots());
+
+// LINQ
+// Language INtegrated Query
+// c'est un ensemble de méthodes d'extensions sur IEnumerable<T>
+// ça permet de manipuler les listes, tableau, etc...
+// de manière plus simple et plus lisible
+var ListeDEntiers = new List<int>() { 1,2,3,4,5,6,9,-4 };
+// on veut les entiers positifs
+// foreach (var entier in ListeDEntiers)
+// {
+//     if (entier > 0)
+//     {
+//         lespositifs.Add(entier)
+//     }
+// }
+var lesPositifs = from i in ListeDEntiers
+                  where i > 0
+                  select i; // oui ça ressemble à du SQL
+// alternative
+var lesPositifs2 = ListeDEntiers.Where(i => i > 0).ToList();
+
+var uneAutreListe = new List<int>() { 6,8,3,-2,9,7 };
+
+// je cherche les élément  commun
+var entierCommun = ListeDEntiers.Intersect(uneAutreListe).ToList();
