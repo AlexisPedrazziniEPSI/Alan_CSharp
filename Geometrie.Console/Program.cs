@@ -35,3 +35,24 @@ foreach (var forme in ListeDeFormes)
     Console.WriteLine(forme.CalculerPerimetre());
     Console.WriteLine(forme.CalculAire());
 }
+
+try
+{
+    var a = new Point(1, 1);
+    var b = new Point(2, 2);
+    var d = new Point(3, 3);
+
+    var triangle = new Triangle(a, b, d);
+}
+catch (ArgumentException ex)
+{
+    Console.WriteLine(ex.Message);
+    foreach (var point in ex.Data.Values)
+    {
+        Console.WriteLine(point);
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rappel_cours", "Rappel_cour
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geometrie.Console", "Geometrie.Console\Geometrie.Console.csproj", "{2CEB9B7C-9606-4546-90A3-A483053DBB65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GénériqueEtDélégues", "GénériqueEtDélégues\GénériqueEtDélégues.csproj", "{42C569D4-8866-40FD-B283-F77071E206F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GénériqueEtDélégues", "GénériqueEtDélégues\GénériqueEtDélégues.csproj", "{42C569D4-8866-40FD-B283-F77071E206F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie.DAL", "Geometrie.DAL\Geometrie.DAL.csproj", "{F92A230F-42EC-4882-AC92-949238B31C16}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{42C569D4-8866-40FD-B283-F77071E206F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42C569D4-8866-40FD-B283-F77071E206F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42C569D4-8866-40FD-B283-F77071E206F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F92A230F-42EC-4882-AC92-949238B31C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F92A230F-42EC-4882-AC92-949238B31C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F92A230F-42EC-4882-AC92-949238B31C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F92A230F-42EC-4882-AC92-949238B31C16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

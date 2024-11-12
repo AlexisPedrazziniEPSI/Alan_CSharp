@@ -38,17 +38,19 @@
         /// </summary>
         /// <param name="other"></param>
         /// <returns>Return the distance between two point (float)</returns>
-        public double CalculDistance(Point autre)
+        public double CalculDistance(Point? autre)
         {
-            if (autre == null) // éviter les erreur de null
-                throw new System.ArgumentNullException(nameof(autre));
+            if (autre == null)
+            {
+                throw new ArgumentNullException(nameof(autre));
+            }
 
-            return Math.Sqrt(Math.Pow(X - autre.X, 2) + Math.Pow(Y - autre.Y, 2));
+            return Math.Sqrt(CalculerDistanceCarre(autre));
         }
 
         public override string ToString() => $"({X}, {Y})";
 
-        public static bool operator ==(Point p1, Point p2)
+        public static bool operator ==(Point? p1, Point? p2)
         {
             if (ReferenceEquals(p1, p2))
                 return true;
@@ -56,7 +58,31 @@
                 return false;
             return p1.X == p2.X && p1.Y == p2.Y;
         }
-        public static bool operator !=(Point p1, Point p2) => !(p1 == p2);
+        public static bool operator !=(Point? p1, Point? p2) => !(p1 == p2);
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is Point other)
+            {
+                return this.X == other.X && this.Y == other.Y;
+            }
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(X, Y);
+        }
+
+        public int CalculerDistanceCarre(Point autre)
+        {
+            if (autre == null)
+            {
+                throw new ArgumentNullException(nameof(autre));
+            }
+
+            return Convert.ToInt32(Math.Pow(X - autre.X, 2) + Math.Pow(Y - autre.Y, 2));
+        }
     }
 
     public class SetHelloWorld // fait hors cours pour tester
@@ -71,7 +97,7 @@
 
         public SetHelloWorld(string texte)
         {
-            Texte = texte;
+            this.texte = texte ?? throw new ArgumentNullException(nameof(texte));
         }
     }
 }

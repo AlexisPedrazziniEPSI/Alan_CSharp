@@ -15,7 +15,11 @@ namespace Geometrie.BLL
         {
             get
             {
-                return (Point)lesPoints[index];
+                if (lesPoints[index] is Point point)
+                {
+                    return point;
+                }
+                throw new InvalidOperationException("Le point est null");
             }
         }
 
