@@ -14,8 +14,10 @@ Console.WriteLine("Hello, World!");
 // déclaration de variable
 int a = 0; // int
 string nomDeVariable = "camelCasing";
+Console.WriteLine(nomDeVariable);
 int b; // création de la variable
 b = 0; // définition de la variable séparé de sa création
+
 
 int c = a + b;
 

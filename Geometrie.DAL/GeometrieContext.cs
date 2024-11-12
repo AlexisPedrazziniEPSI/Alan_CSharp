@@ -8,28 +8,41 @@ using System.Threading.Tasks;
 
 namespace Geometrie.DAL
 {
-    internal class GeometrieContext : DbContext
+    /// <summary>
+    /// Classe d'accès aux données pour les formes géométriques
+    /// en Entity Framework (code-first)
+    /// </summary>
+    public class GeometrieContext : DbContext
     {
         #region Configuration
+        //on va récupérer la chaine de connexion dans le fichier de configuration
         private readonly IConfiguration configuration;
 
-        public GeometrieContext() : base(new DbContextOptions<GeometrieContext>())
+        public GeometrieContext()
+            : base(new DbContextOptions<GeometrieContext>())
         {
-            var buider = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json", optional:false, reloadOnChange:false);
-            configuration = buider.Build();
+            //on récupère un objet configuration
+            //à parttir d'un fichier de configuration appsettings.json
+            var builder = new ConfigurationBuilder()
+                        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
+            configuration = builder.Build();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(configuration.GetConnectionString("Geometrie"));
-            }
+            //on configure le provider et la chaine de connexion
+            optionsBuilder.UseSqlServer(configuration.GetConnectionString("Geometrie"));
         }
         #endregion
 
-        #region DbSets
+        #region DbSet
+
+        /// <summary>
+        /// Je configure DbSet pour les Points
+        /// c'est ça qui va me permettre de faire des requêtes
+        /// et de créer la table Points
+        /// </summary>
+
         public DbSet<Point> Points { get; set; }
         #endregion
     }

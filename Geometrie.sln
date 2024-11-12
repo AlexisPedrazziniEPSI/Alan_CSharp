@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GénériqueEtDélégues", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie.DAL", "Geometrie.DAL\Geometrie.DAL.csproj", "{F92A230F-42EC-4882-AC92-949238B31C16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie.DAL.Tests", "Geometrie.DAL.Tests\Geometrie.DAL.Tests.csproj", "{BEA3ADD6-B734-409C-9E66-CF2646694979}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{F92A230F-42EC-4882-AC92-949238B31C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F92A230F-42EC-4882-AC92-949238B31C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F92A230F-42EC-4882-AC92-949238B31C16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA3ADD6-B734-409C-9E66-CF2646694979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA3ADD6-B734-409C-9E66-CF2646694979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA3ADD6-B734-409C-9E66-CF2646694979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA3ADD6-B734-409C-9E66-CF2646694979}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,8 +1,8 @@
 ﻿namespace Geometrie.BLL
 {
     /// <summary>
-    /// Représente un point ddans un espace a deux dimensions
-    /// avec les coordonées x et y
+    /// Représente un point dans un espace à deux dimensions
+    /// avec les coordonnées x et y
     /// </summary>
     public class Point
     {
@@ -12,32 +12,37 @@
         /// <summary>
         /// Abscisse du point
         /// </summary>
-        public int X // sekuritiy ( en vrai c'est pour complexifier le code et sécuriser la valeur )
-        { 
+        public int X
+        {
             get { return x; }
-            private set { x = value; } // on ne peux pas modifier la valeur de x en dehors de la classe
+            private set { x = value; }
         }
 
         /// <summary>
         /// Ordonnée du point
         /// </summary>
-        public int Y { get; private set; } // version réduit du code au dessus et automatiquement privé
+        public int Y
+        {
+            get { return y; }
+            private set { y = value; }
+        }
 
         /// <summary>
-        /// constructeur d'un point
+        /// Constructeur d'un point
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         public Point(int x, int y)
         {
-            X = x; //
-            Y = y;
+            this.x = x;
+            this.y = y;
         }
+
         /// <summary>
         /// Calcul la distance entre deux points
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns>Return the distance between two point (float)</returns>
+        /// <param name="autre"></param>
+        /// <returns>Retourne la distance entre deux points (double)</returns>
         public double CalculDistance(Point? autre)
         {
             if (autre == null)
@@ -58,6 +63,7 @@
                 return false;
             return p1.X == p2.X && p1.Y == p2.Y;
         }
+
         public static bool operator !=(Point? p1, Point? p2) => !(p1 == p2);
 
         public override bool Equals(object? obj)
@@ -85,7 +91,7 @@
         }
     }
 
-    public class SetHelloWorld // fait hors cours pour tester
+    public class SetHelloWorld
     {
         private string texte;
 
