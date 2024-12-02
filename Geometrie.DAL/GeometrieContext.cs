@@ -10,40 +10,41 @@ namespace Geometrie.DAL
 {
     /// <summary>
     /// Classe d'accès aux données pour les formes géométriques
-    /// en Entity Framework (code-first)
+    /// en Entity Framework (Code First)
     /// </summary>
     public class GeometrieContext : DbContext
     {
         #region Configuration
-        //on va récupérer la chaine de connexion dans le fichier de configuration
+        //on va récupérer la chaîne de connexion dans le fichier de configuration
         private readonly IConfiguration configuration;
 
         public GeometrieContext()
             : base(new DbContextOptions<GeometrieContext>())
         {
             //on récupère un objet configuration
-            //à parttir d'un fichier de configuration appsettings.json
+            //à partir d'un fichier de configuration appsettings.json
             var builder = new ConfigurationBuilder()
-                        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
+                            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: false);
             configuration = builder.Build();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //on configure le provider et la chaine de connexion
-            optionsBuilder.UseSqlServer(configuration.GetConnectionString("Geometrie"));
+            if (!optionsBuilder.IsConfigured)
+            {
+                //on configure le provider et la chaîne de connexion
+                optionsBuilder.UseSqlServer(configuration.GetConnectionString("Geometrie"));
+            }
         }
         #endregion
 
         #region DbSet
-
         /// <summary>
-        /// Je configure DbSet pour les Points
+        /// Je configure un DbSet pour les points
         /// c'est ça qui va me permettre de faire des requêtes
         /// et de créer la table Points
         /// </summary>
-
-        public DbSet<Point> Points { get; set; }
+        public DbSet<Point_DAL> Points { get; set; }
         #endregion
     }
 }

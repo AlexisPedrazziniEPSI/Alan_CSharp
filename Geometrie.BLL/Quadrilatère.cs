@@ -8,19 +8,17 @@ namespace Geometrie.BLL
 {
     public class Quadrilatère : Polygone
     {
-        public Quadrilatère(Point a, Point b, Point c, Point d) : base(a, b, c, d)
+        public Quadrilatère(Point a, Point b, Point c, Point d)
+            : base(a, b, c, d)
         {
-
         }
 
-        public override double CalculAire()
+        public override double CalculerAire()
         {
-            double p = CalculerPerimetre() / 2;
-            double a = this[0].CalculDistance(this[1]);
-            double b = this[1].CalculDistance(this[2]);
-            double c = this[2].CalculDistance(this[3]);
-            double d = this[3].CalculDistance(this[0]);
-            return Math.Sqrt((p - a) * (p - b) * (p - c) * (p - d));
+            //je le coupe en 2 triangles
+            var t1 = new Triangle(this[0], this[1], this[2]);
+            var t2 = new Triangle(this[0], this[2], this[3]);
+            return t1.CalculerAire() + t2.CalculerAire();
         }
     }
 }

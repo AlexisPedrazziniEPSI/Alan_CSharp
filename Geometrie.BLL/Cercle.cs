@@ -18,6 +18,7 @@ namespace Geometrie.BLL
         }
 
         public double CalculerPerimetre() => 2 * Math.PI * Rayon;
-        public double CalculAire() => Math.PI * Math.Pow(Rayon, 2);
+
+        public double CalculerAire() => Math.PI * Math.Pow(Rayon, 2);
     }
 }

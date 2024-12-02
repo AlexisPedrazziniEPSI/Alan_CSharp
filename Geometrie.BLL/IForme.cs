@@ -9,6 +9,6 @@ namespace Geometrie.BLL
     public interface IForme
     {
         double CalculerPerimetre();
-        double CalculAire();
+        double CalculerAire();
     }
 }
