@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geometrie.DTO", "Geometrie.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geometrie.Service", "Geometrie.Service\Geometrie.Service.csproj", "{4E48DCAB-A098-49E5-8C60-8E0B3932CB81}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie.API.Test", "Geometrie.API.Test\Geometrie.API.Test.csproj", "{26008B4A-B195-41F6-96D6-8FCAC7A66475}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometrie.Service.Test", "Geometrie.Service.Test\Geometrie.Service.Test.csproj", "{E8704FB5-8625-4DF4-B70D-F5681362C5DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +69,14 @@ Global
 		{4E48DCAB-A098-49E5-8C60-8E0B3932CB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E48DCAB-A098-49E5-8C60-8E0B3932CB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E48DCAB-A098-49E5-8C60-8E0B3932CB81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26008B4A-B195-41F6-96D6-8FCAC7A66475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26008B4A-B195-41F6-96D6-8FCAC7A66475}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26008B4A-B195-41F6-96D6-8FCAC7A66475}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26008B4A-B195-41F6-96D6-8FCAC7A66475}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8704FB5-8625-4DF4-B70D-F5681362C5DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8704FB5-8625-4DF4-B70D-F5681362C5DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8704FB5-8625-4DF4-B70D-F5681362C5DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8704FB5-8625-4DF4-B70D-F5681362C5DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

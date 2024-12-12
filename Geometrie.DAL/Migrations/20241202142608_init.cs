@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Geometrie.DAL.Migrations
 {
     /// <inheritdoc />
-    public partial class AjoutPolygone : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,8 +17,8 @@ namespace Geometrie.DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DateCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateModification = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    DateDeCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateDeModification = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -33,8 +33,8 @@ namespace Geometrie.DAL.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     X = table.Column<int>(type: "int", nullable: false),
                     Y = table.Column<int>(type: "int", nullable: false),
-                    DateCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DateModification = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DateDeCreation = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateDeModification = table.Column<DateTime>(type: "datetime2", nullable: true),
                     PolygoneId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>

@@ -1,6 +1,4 @@
-﻿using Geometrie.DAL;
-
-namespace Geometrie.BLL
+﻿namespace Geometrie.BLL
 {
     /// <summary>
     /// Représente un point dans un espace à deux dimensions.

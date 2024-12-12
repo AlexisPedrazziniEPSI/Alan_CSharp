@@ -10,6 +10,18 @@ namespace Geometrie.Service
         private GeometrieContext context;
         private Point_Depot depot;
 
+        /// <summary>
+        /// constructeur pour le test unitaire
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="depot"></param>
+        public  Point_Service(Point_Depot unDepot) // "unDepot" et pas depot pour éviter des confusions
+        {
+            ArgumentNullException.ThrowIfNull(unDepot);
+
+            depot = unDepot;
+        }
+
         public Point_Service(GeometrieContext context)
         {
             ArgumentNullException.ThrowIfNull(context, nameof(context));

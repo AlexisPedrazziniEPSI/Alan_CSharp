@@ -1,53 +1,59 @@
-﻿using Geometrie.Service;
+﻿using Geometrie.DTO;
+using Geometrie.Service;
 using Microsoft.AspNetCore.Mvc;
-using Geometrie.DTO;
 
 namespace Geometrie.API.Controllers
 {
+    [ApiController]
+    [Route("[controller]/[action]")]
     public class Point_Controller : Controller
     {
         private Point_Service service;
 
-        [HttpPost]
-        public IActionResult Add(Point_DTO point)
+        public Point_Controller(Point_Service service)
         {
-            return Ok(service.Add(point));
+            this.service = service;
+        }
+
+        //On mappe toutes les méthodes de service dans des méthodes de contrôleurs
+
+        [HttpPost]
+        public Point_DTO Add(Point_DTO point)
+        {
+            return service.Add(point);
         }
 
         [HttpPost]
+        [ActionName("DeleteObject")]
         public IActionResult Delete(Point_DTO point)
         {
             return Ok(service.Delete(point));
         }
 
         [HttpPost]
-        public IActionResult Delete(int Id)
+        [ActionName("DeleteById")]
+        public IActionResult Delete(int id)
         {
-            return Ok(service.Delete(Id));
+            return Ok(service.Delete(id));
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IEnumerable<Point_DTO> GetAll()
         {
-            return Ok(service.GetAll());
+            return service.GetAll();
         }
 
         [HttpGet]
-        public IActionResult GetById(int Id) {
-            return Ok(service.GetById(Id));
+        public Point_DTO? GetById(int id)
+        {
+            return service.GetById(id);
         }
 
         [HttpPost]
-        public IActionResult Update(Point_DTO point)
+        public Point_DTO Update(Point_DTO point)
         {
-            return Ok(service.Update(point));
+            return service.Update(point);
         }
 
-        public Point_Controller(Point_Service service)
-        {
-            ArgumentNullException.ThrowIfNull(service, nameof(service));
-
-            this.service = service;
-        }
     }
 }

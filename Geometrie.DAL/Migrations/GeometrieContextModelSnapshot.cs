@@ -4,7 +4,6 @@ using Geometrie.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,11 +11,9 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Geometrie.DAL.Migrations
 {
     [DbContext(typeof(GeometrieContext))]
-    [Migration("20241112111743_AjoutPolygone")]
-    partial class AjoutPolygone
+    partial class GeometrieContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,18 +22,18 @@ namespace Geometrie.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Geometrie.DAL.Point", b =>
+            modelBuilder.Entity("Geometrie.DAL.Point_DAL", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
-                    b.Property<DateTime>("DateCreation")
+                    b.Property<DateTime>("DateDeCreation")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateModification")
+                    b.Property<DateTime?>("DateDeModification")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("PolygoneId")
@@ -57,16 +54,16 @@ namespace Geometrie.DAL.Migrations
 
             modelBuilder.Entity("Geometrie.DAL.Polygone", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
 
-                    b.Property<DateTime>("DateCreation")
+                    b.Property<DateTime>("DateDeCreation")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("DateModification")
+                    b.Property<DateTime?>("DateDeModification")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -74,7 +71,7 @@ namespace Geometrie.DAL.Migrations
                     b.ToTable("Polygone");
                 });
 
-            modelBuilder.Entity("Geometrie.DAL.Point", b =>
+            modelBuilder.Entity("Geometrie.DAL.Point_DAL", b =>
                 {
                     b.HasOne("Geometrie.DAL.Polygone", "Polygone")
                         .WithMany("Points")
