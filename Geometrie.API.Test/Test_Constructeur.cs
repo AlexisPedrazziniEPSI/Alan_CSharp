@@ -2,8 +2,10 @@
 using Geometrie.BLL;
 using Geometrie.DAL;
 using Geometrie.DTO;
-using Geometrie.Service;
 using Geometrie.BLL.Depots;
+using Geometrie.API;
+using Moq;
+using Geometrie.API.Controllers;
 
 namespace Geometrie.API.Test
 {
@@ -18,8 +20,8 @@ namespace Geometrie.API.Test
 
             Assert.Equal(2, point.Y);
 
-            var calculdistcarre = point.CalculerDistanceCarre(new Point(3, 4));
-            Assert.Equal(2.8284271247461903, calculdistcarre);
+            var calculDistanceCarre = point.CalculerDistanceCarre(new Point(5, 7));
+            Assert.Equal(41, calculDistanceCarre);
 
             var calculdist = point.CalculerDistance(new Point(3, 4));
             Assert.Equal(2.8284271247461903, calculdist);
@@ -27,8 +29,11 @@ namespace Geometrie.API.Test
             Console.WriteLine("Point.cs OK");
         }
 
+        //[Theory]
+        //[InlineData(1, 1, 2)]
+        //[InlineData(2, 3, 4)]
         [Fact]
-        public void testPointDepot()
+        public void TestPointDepot() // int Id, int X, int Y
         {
             // tester pointDepot.cs (tout ses trucs)
             var context = new GeometrieContext();
@@ -36,7 +41,8 @@ namespace Geometrie.API.Test
             var point = new Point(1, 2);
             pointDepot.Add(point);
             var pointRecup = pointDepot.GetById(1);
-            Assert.Equal(3, pointRecup.Id);
+            //Assert.NotNull(pointRecup); // si null, erreur
+            Assert.Equal(1, pointRecup.Id);
             Console.WriteLine(pointRecup.Id);
             Assert.Equal(1, pointRecup.X);
             Console.WriteLine(pointRecup.X);
@@ -55,6 +61,18 @@ namespace Geometrie.API.Test
             Assert.Equal(id, point.Id);
             Assert.Equal(x, point.X);
             Assert.Equal(y, point.Y);
+        }
+
+        [Fact]
+        public void FactController()
+        {
+            // tester controller.cs
+            // utilisation de moq pour simuler un service
+            var service = new Moq.Mock<IService<Point_DTO>>();
+
+            var controller = new Point_Controller(service.Object);
+
+            //var point = new Point_DTO(1, 2, 3);
         }
     }
 }

@@ -1,5 +1,6 @@
 using Geometrie.BLL.Depots;
 using Geometrie.BLL;
+using Geometrie.DTO;
 using Moq;
 
 namespace Geometrie.Service.Test
@@ -13,7 +14,7 @@ namespace Geometrie.Service.Test
         [Fact]
         public void Point_Service_Constructeur()
         {
-            var depot = new Moq.Mock<Point_Depot>().Object;
+            var depot = new Moq.Mock<IDepot<Point>>().Object;
             var service = new Point_Service(depot);
 
             // assertion
@@ -24,7 +25,7 @@ namespace Geometrie.Service.Test
         public void Point_Service_Add()
         {
             // Arrange
-            var depot = new Mock<Point_Depot>();
+            var depot = new Mock<IDepot<Point>>();
 
             // la fausse méthode (via moq) imite la vrai méthode Add
             depot.Setup(d => d.Add(It.IsAny<Point>())).Returns(new Point(1, 2, 3));
@@ -35,8 +36,29 @@ namespace Geometrie.Service.Test
 
             var service = new Point_Service(depot.Object);
 
-            var point = new Point(2, 3);
-            Assert.NotNull(service);
+            var point = new Point_DTO() { Id = 0, X = 2, Y = 3 };
+
+            // Act
+            var result = service.Add(point);
+
+            //assertion
+            Assert.NotNull(result);
+            Assert.Equal(1, result.Id);
+            Assert.Equal(2, result.X);
+            Assert.Equal(3, result.Y);
+            depot.Verify(d => d.Add(It.IsAny<Point>()), Times.Once);
+        }
+
+        [Fact]
+        public void Point_Service_Calcul_Dist()
+        {
+            int id1 = 2;
+            int id2 = 3;
+
+            var depot = new Mock<IDepot<Point>>();
+            var service = new Point_Service(depot.Object);
+
+            var result = service.CalcDist(id1, id2);
         }
     }
 }

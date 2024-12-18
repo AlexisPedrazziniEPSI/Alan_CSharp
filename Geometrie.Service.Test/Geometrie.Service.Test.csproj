@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Geometrie.BLL\Geometrie.BLL.csproj" />
+    <ProjectReference Include="..\Geometrie.DTO\Geometrie.DTO.csproj" />
     <ProjectReference Include="..\Geometrie.Service\Geometrie.Service.csproj" />
   </ItemGroup>
 

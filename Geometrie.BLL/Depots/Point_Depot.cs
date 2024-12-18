@@ -13,7 +13,6 @@ namespace Geometrie.BLL.Depots
         //un contexte pour accéder à la base de données
         private GeometrieContext context;
 
-
         public Point_Depot(GeometrieContext context)
         {
             this.context = context;
@@ -71,6 +70,9 @@ namespace Geometrie.BLL.Depots
 
         public Point Update(Point element)
         {
+            ArgumentNullException.ThrowIfNull(element, nameof(element));
+            ArgumentNullException.ThrowIfNull(element.Id, nameof(element.Id));
+
             var point_DAL = context.Points.Find(element.Id);
             if (point_DAL == null)
                 throw new ArgumentException("Le point n'existe pas en base de données", nameof(element));
