@@ -36,7 +36,7 @@ namespace Geometrie.BLL
 
         public double CalculerAire() => Math.PI * Math.Pow(Rayon, 2);
         
-        public static double CalculAirePlusieursCercles(params Cercle[] cercles)
+        public double CalculAirePlusieursCercles(params Cercle[] cercles)
         {
             double aire = 0;
             foreach (var cercle in cercles)

@@ -1,6 +1,8 @@
 ﻿using Geometrie.DTO;
 using Geometrie.Service;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
+using Swashbuckle.AspNetCore.Filters;
 
 namespace Geometrie.API.Controllers
 {
@@ -60,12 +62,20 @@ namespace Geometrie.API.Controllers
 
         [HttpPost]
         [ActionName("CalculerAirePlusieursCercles (donnez 2 cercle au moins)")]
+        [SwaggerRequestExample(typeof(Cercle_DTO), typeof(Cercle_DTO_Example))]
         public double CalculerAirePlusieursCercles(params Cercle_DTO[] cercles)
         {
             var IP = HttpContext?.Connection.RemoteIpAddress?.ToString();
             IP = IP ?? "inconnue";
 
             return service.CalculAirePlusieursCercles(IP, cercles);
+        }
+    }
+    public class Cercle_DTO_Example : IExamplesProvider<Cercle_DTO>
+    {
+        public Cercle_DTO GetExamples()
+        {
+            return new Cercle_DTO { Id = 1, Rayon = 5 };
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Geometrie.DAL
+﻿using System.Drawing;
+
+namespace Geometrie.DAL
 {
     public class Cercle_DAL
     {
@@ -6,8 +8,6 @@
         public double Rayon { get; set; }
         public DateTime DateDeCreation { get; set; }
         public DateTime? DateDeModification { get; set; }
-
-        public Cercle_DAL() { }
 
         public Cercle_DAL(double rayon)
         {

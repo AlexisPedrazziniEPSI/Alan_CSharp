@@ -18,20 +18,6 @@ foreach (var point in tri)
     Console.WriteLine(point);
 }
 
-var cercle = new Cercle(p1, 5);
-Console.WriteLine(tri.CalculerPerimetre());    
-Console.WriteLine(cercle.CalculerPerimetre());
-
-var listeDeFormes = new List<IForme>();
-listeDeFormes.Add(tri);
-listeDeFormes.Add(cercle);
-
-foreach (var forme in listeDeFormes)
-{
-    Console.WriteLine($"Périmètre : {forme.CalculerPerimetre()}");
-    Console.WriteLine($"Aire : {forme.CalculerAire()}");
-}
-
 try
 {
     var a = new Point(1,1);

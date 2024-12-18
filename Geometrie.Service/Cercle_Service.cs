@@ -78,9 +78,26 @@ namespace Geometrie.Service
             return new Cercle_DTO { Id = cercle_BLL.Id, Rayon = cercle_BLL.Rayon };
         }
 
+        /// <summary>
+        /// Calcule l'aire de plusieurs cercles et enregistre l'appel dans les logs.
+        /// </summary>
+        /// <param name="IP">L'adresse IP de l'appelant.</param>
+        /// <param name="cercles">Les cercles dont l'aire doit être calculée.</param>
+        /// <returns>La somme des aires des cercles.</returns>
+        /// <exception cref="ArgumentNullException">Si le paramètre cercles est null.</exception>
         public double CalculAirePlusieursCercles(string IP, params Cercle_DTO[] cercles)
         {
             ArgumentNullException.ThrowIfNull(cercles, nameof(cercles));
+
+            if (cercles.Length == 0)
+            {
+                throw new ArgumentException("Vous n'avez pas fournis de cercle. Donnez en au minimum 2");
+            }
+
+            if (cercles.Length == 1)
+            {
+                throw new ArgumentException("Il faut au moins deux cercles pour calculer une aire.");
+            }
 
             var cercles_BLL = new Cercle[cercles.Length];
             for (int i = 0; i < cercles.Length; i++)
