@@ -4,6 +4,7 @@ using Geometrie.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Geometrie.DAL.Migrations
 {
     [DbContext(typeof(GeometrieContext))]
-    partial class GeometrieContextModelSnapshot : ModelSnapshot
+    [Migration("20241213083501_ajoutLog")]
+    partial class ajoutLog
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,43 +25,20 @@ namespace Geometrie.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Geometrie.DAL.Cercle_DAL", b =>
+            modelBuilder.Entity("Geometrie.DAL.Log", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
-
-                    b.Property<DateTime>("DateDeCreation")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateDeModification")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("Rayon")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Cercles");
-                });
-
-            modelBuilder.Entity("Geometrie.DAL.Log_DAL", b =>
-                {
-                    b.Property<int?>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateAppel")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("IP")
                         .IsRequired()
-                        .HasMaxLength(39)
-                        .HasColumnType("nvarchar(39)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

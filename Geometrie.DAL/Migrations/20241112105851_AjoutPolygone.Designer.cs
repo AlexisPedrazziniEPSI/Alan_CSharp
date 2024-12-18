@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Geometrie.DAL.Migrations
 {
     [DbContext(typeof(GeometrieContext))]
-    [Migration("20241202142608_init")]
-    partial class init
+    [Migration("20241112105851_AjoutPolygone")]
+    partial class AjoutPolygone
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,13 +25,13 @@ namespace Geometrie.DAL.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Geometrie.DAL.Point_DAL", b =>
+            modelBuilder.Entity("Geometrie.DAL.Point", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateDeCreation")
                         .HasColumnType("datetime2");
@@ -57,11 +57,11 @@ namespace Geometrie.DAL.Migrations
 
             modelBuilder.Entity("Geometrie.DAL.Polygone", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateDeCreation")
                         .HasColumnType("datetime2");
@@ -74,7 +74,7 @@ namespace Geometrie.DAL.Migrations
                     b.ToTable("Polygone");
                 });
 
-            modelBuilder.Entity("Geometrie.DAL.Point_DAL", b =>
+            modelBuilder.Entity("Geometrie.DAL.Point", b =>
                 {
                     b.HasOne("Geometrie.DAL.Polygone", "Polygone")
                         .WithMany("Points")
